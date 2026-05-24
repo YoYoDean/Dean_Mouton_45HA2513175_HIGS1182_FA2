@@ -24,6 +24,7 @@ public class EnemyAI : MonoBehaviour
 
         if (distance <= seeRange)
         {
+            //Audio.instance.PlayDemonPatrol();
             agent.SetDestination(player.position);
 
             if (distance <= attackRange && Time.time - lastAttackTime > attackCooldown)

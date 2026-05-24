@@ -9,6 +9,7 @@ public class Collectable : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("Chicken Collected!");
+            Audio.instance.PlayPickup();
             GameManager.instance.collectable += 1 ;
             GameManager.instance.money += 1;
             PlayerPrefs.SetInt("collectable", PlayerPrefs.GetInt("collectable") + 1);

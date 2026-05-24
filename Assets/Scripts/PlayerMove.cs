@@ -23,6 +23,8 @@ public class PlayerMove : MonoBehaviour
     public BulletPool pool;
     public float bulletSpeed = 100f;
 
+    
+
 
     
 
@@ -93,9 +95,13 @@ public class PlayerMove : MonoBehaviour
         
     }
 
+    
+
     public void Shoot()
 {   
     Debug.Log("Shoot");
+    Audio.instance.PlayShoot();
+
     Rigidbody rb = pool.GetBullet();
 
     rb.transform.position = muzzle.position + muzzle.forward * 0.5f;

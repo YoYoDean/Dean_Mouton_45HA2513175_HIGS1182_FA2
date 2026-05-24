@@ -14,7 +14,7 @@ public class wavespawn : MonoBehaviour
     public int currentWave = 0;
     public GameObject zombiePrefab;
     public GameObject pressEKey;
-    private bool isKeyPressed = false;
+    //private bool isKeyPressed = false;
     private bool playerInTrig = false;
     private UiManager uiManager;
     private CollectableSpawner zero;
@@ -39,6 +39,7 @@ public class wavespawn : MonoBehaviour
     {
         if (playerInTrig && Keyboard.current.eKey.wasPressedThisFrame)
         {   
+            Audio.instance.PlayGhostBreath();
             zero.SpawnEnlessMode();
             one.SpawnEnlessMode();
             two.SpawnEnlessMode();
