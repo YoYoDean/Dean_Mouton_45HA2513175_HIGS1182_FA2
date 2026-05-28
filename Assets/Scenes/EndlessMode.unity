@@ -932,10 +932,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1817695590}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1068, y: 113}
-  m_SizeDelta: {x: 694.235, y: 86}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: -798.13, y: 145.89}
+  m_SizeDelta: {x: 295.97095, y: 55.047}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &198564696
 MonoBehaviour:
@@ -957,7 +957,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "PowerUp TMR: \n"
+  m_text: 'Shield Tmr: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -984,8 +984,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5176,8 +5176,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 361, y: 103}
-  m_SizeDelta: {x: 694.235, y: 67.891}
+  m_AnchoredPosition: {x: 361, y: 92.133}
+  m_SizeDelta: {x: 694.235, y: 52.473}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &900142438
 MonoBehaviour:
@@ -5226,8 +5226,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5538,6 +5538,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnHere: {fileID: 1163323755}
   coin: {fileID: 5047012188902761527, guid: 617589b3f71c23648b1150e20c4e5313, type: 3}
+--- !u!4 &1219834460 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5465940246521907071, guid: f8386f70cf3e8c449bc11784b75e6e44, type: 3}
+  m_PrefabInstance: {fileID: 1238135354}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1235587884
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6494,8 +6499,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 361, y: 31.950928}
-  m_SizeDelta: {x: 694.235, y: 67.891}
+  m_AnchoredPosition: {x: 361, y: 40.448}
+  m_SizeDelta: {x: 694.235, y: 50.896}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1546181010
 MonoBehaviour:
@@ -6544,8 +6549,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -8068,6 +8073,7 @@ MonoBehaviour:
   highZombie: {fileID: 0}
   highColl: {fileID: 0}
   highWaves: {fileID: 0}
+  tmrText: {fileID: 198564696}
   wavespawn: {fileID: 0}
 --- !u!1 &2114139888
 GameObject:
@@ -8703,7 +8709,11 @@ MonoBehaviour:
   playerShield: 0
   isShieldActive: 0
   enemyHealth: 100
+  animator: {fileID: 752647789}
+  playerObj: {fileID: 8827421330579750405}
   shieldObject: {fileID: 1074168571}
+  playerInput: {fileID: 9010225542736851964}
+  theBoss: {fileID: 1219834460}
 --- !u!1 &3940380317426745881
 GameObject:
   m_ObjectHideFlags: 0

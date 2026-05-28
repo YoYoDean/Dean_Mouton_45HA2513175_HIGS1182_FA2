@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
@@ -8,10 +9,14 @@ public class Health : MonoBehaviour
     public float playerShield = 0f;
     public bool isShieldActive = false;
     public float enemyHealth = 100f;
-    private GameObject playerObj;
+    public Animator animator;
+    public GameObject playerObj;
     public GameObject shieldObject;
+    public PlayerInput playerInput;
     public static Health instance;
     private UiManager uiManager;
+    private PlayerMove playerMove;
+    public Transform theBoss;
 
 
     void Awake()
@@ -22,6 +27,7 @@ public class Health : MonoBehaviour
         }
 
         uiManager = GameObject.FindGameObjectWithTag("UiManager").GetComponent<UiManager>();
+        playerMove = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMove>();
 
     }
 
@@ -66,14 +72,32 @@ public class Health : MonoBehaviour
         UiManager.instance.UpdateHealth();
         if (playerHealth <= 0)
         {
+            theBoss.transform.SetParent(playerObj.transform, true);
+            //Camera.main.transform.SetParent(null);
+            Camera.main.transform.SetParent(theBoss, true);
+            playerMove.enabled = false;
+            playerInput.enabled = false;
+            GameObject[] currEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach(GameObject enemy in currEnemies)
+            {
+                enemy.SetActive(false);
+            }
             Audio.instance.PlayPlayerDie();
+            animator.SetBool("Idle" , false);
+            animator.SetTrigger("Death");
             Debug.Log("Player Killed!");
+            StartCoroutine(Countdown());
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            SceneManager.LoadScene("GameOver");
+            
         }
     }
-    public void HurtEnemy(int hurtAmount)
+    IEnumerator Countdown()
+    {
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene("GameOver");
+    }
+        public void HurtEnemy(int hurtAmount)
     {
         enemyHealth -= hurtAmount;
         if (enemyHealth <= 0)
@@ -89,11 +113,24 @@ public class Health : MonoBehaviour
 
     IEnumerator ShieldActiveTime()
     {
-        yield return new WaitForSeconds(30f);
+        float tmr = 30f;
+
+        while (tmr > -1)
+        {
+        UiManager.instance.UpdateTimer(tmr);
+
+        tmr -= Time.deltaTime;
+
+        yield return null; // wait next frame
+        }  
+
+        //yield return new WaitForSeconds(30f);
+
         if(isShieldActive == true)  // if not broken by enemy
         {
             Audio.instance.PlayShieldBreak();
         }
+
         isShieldActive = false;
         shieldObject.SetActive(false);
         ShieldPickup.instance.isShieldActive = false;

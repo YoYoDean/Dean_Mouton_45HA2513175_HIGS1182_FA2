@@ -18,6 +18,7 @@ public class UiManager : MonoBehaviour
     public TextMeshProUGUI highZombie;
     public TextMeshProUGUI highColl;
     public TextMeshProUGUI highWaves;
+    public TextMeshProUGUI tmrText;
     public wavespawn wavespawn;
 
     void Start()
@@ -63,6 +64,10 @@ public class UiManager : MonoBehaviour
     public void UpdateHealth()
     {
         health.text = "Health: " + Health.instance.playerHealth;
+    }
+    public void UpdateTimer(float tmr)
+    {
+    tmrText.text = "Shield Tmr: " + Mathf.CeilToInt(tmr);
     }
 
     public void UpdateShield()
