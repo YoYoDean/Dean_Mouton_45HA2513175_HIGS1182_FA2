@@ -5,7 +5,7 @@ public class Audio : MonoBehaviour
 {
     public static Audio instance;
     public bool isPlaying = false;
-    public AudioClip shoot, pickup, demonDie, playerDie, demonAttack, demonAttack2 , demonPatrol, ghostBreath;
+    public AudioClip shoot, shieldbreak, pickup, demonDie, playerDie, demonAttack, demonAttack2 , demonPatrol, ghostBreath;
     public AudioSource audioSource, audioDemon;
 
     void Awake()
@@ -27,6 +27,14 @@ public class Audio : MonoBehaviour
         if(pickup && audioSource)
         {
             audioSource.PlayOneShot(pickup);
+        }
+    }
+
+    public void PlayShieldBreak()
+    {
+        if(shieldbreak && audioSource)
+        {
+            audioSource.PlayOneShot(shieldbreak);
         }
     }
 

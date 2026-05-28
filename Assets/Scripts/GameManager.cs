@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     public void Awake()
     {
+       
        money = PlayerPrefs.GetInt("Money", money);
         if (instance == null)
         {

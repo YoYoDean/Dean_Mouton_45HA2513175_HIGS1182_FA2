@@ -163,4 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: 100
+  playerShield: 0
+  isShieldActive: 0
   enemyHealth: 100
+  shieldObject: {fileID: 0}

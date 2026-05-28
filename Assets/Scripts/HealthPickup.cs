@@ -22,11 +22,13 @@ public class HealthPickup : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
+        if(other.CompareTag("Player"))
         ui.pressEKey.SetActive(true);
         isInside = true;
     }
     void OnTriggerExit(Collider other)
     {
+        if(other.CompareTag("Player"))
         ui.pressEKey.SetActive(false);
         isInside = false;
     }

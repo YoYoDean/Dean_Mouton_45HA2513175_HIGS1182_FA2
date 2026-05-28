@@ -8,7 +8,7 @@ public class Collectable : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Chicken Collected!");
+            Debug.Log("Ghosts Collected!");
             Audio.instance.PlayPickup();
             GameManager.instance.collectable += 1 ;
             GameManager.instance.money += 1;

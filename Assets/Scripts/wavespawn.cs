@@ -22,6 +22,7 @@ public class wavespawn : MonoBehaviour
     private CollectableSpawner two;
     private List<CollectableSpawner> spawners = new List<CollectableSpawner>();
     public wavespawn instance;
+    public bool isWaveActive = false;
 
     void Awake()
     {
@@ -35,10 +36,30 @@ public class wavespawn : MonoBehaviour
         instance = this;
         
         }
+
+        public void CheckWaveActive()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        if(enemies.Length >= 1) 
+        {
+            isWaveActive = true;
+        }
+        else
+        {
+            isWaveActive = false;
+        };
+    }
     void Update()
     {
+        
+        //Debug.Log(isWaveActive);
+
         if (playerInTrig && Keyboard.current.eKey.wasPressedThisFrame)
         {   
+            CheckWaveActive();
+            if(isWaveActive == false)
+            {
             Audio.instance.PlayGhostBreath();
             zero.SpawnEnlessMode();
             one.SpawnEnlessMode();
@@ -53,6 +74,7 @@ public class wavespawn : MonoBehaviour
             {
                 Instantiate(zombiePrefab, i.transform.position, i.transform.rotation);
                 
+            }
             }
         }}
     }

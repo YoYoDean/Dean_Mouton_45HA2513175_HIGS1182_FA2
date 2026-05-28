@@ -6,6 +6,7 @@ using UnityEngine.UIElements;
 
 public class PlayerMove : MonoBehaviour
 {
+    private static readonly int RunHash = Animator.StringToHash("Run");
     [Header("Movement")]
     public float speed = 5f;
 
@@ -15,6 +16,7 @@ public class PlayerMove : MonoBehaviour
     public float sens = 100f;
     public Transform cameraPivot;
     private float xRotation = 0f;
+    public Animator animator;
 
 
     public Rigidbody bullet;
@@ -32,6 +34,7 @@ public class PlayerMove : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+        
     }
 
     void FixedUpdate()
@@ -46,6 +49,8 @@ public class PlayerMove : MonoBehaviour
 
     void Walk()
     {
+        
+        
         Vector3 move = transform.right * moveInput.x + transform.forward * moveInput.y;
         Vector3 targetPosition = rb.position + move * speed * Time.fixedDeltaTime;
         rb.MovePosition(targetPosition);
@@ -67,6 +72,9 @@ public class PlayerMove : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
+        float runSpeed = moveInput.magnitude;
+        //Debug.Log(runSpeed);
+        animator.SetFloat(RunHash, runSpeed);
     }
 
     public void OnMouse(InputAction.CallbackContext context)
@@ -90,6 +98,7 @@ public class PlayerMove : MonoBehaviour
     {
         if (context.performed)
         {
+            animator.SetTrigger("Shoot");
             Shoot();
         }
         
